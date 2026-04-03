@@ -100,16 +100,7 @@ class IMUDriver(Node):
             sys.exit(1)
 
     def set_output_rate_40hz(self):
-        """
-        Write to VectorNav register 07 (Async Data Output Frequency) to set 40 Hz.
-        Command format: $VNWRG,07,40*XX
-        The checksum is calculated over 'VNWRG,07,40'
-        """
-        cmd_body = 'VNWRG,07,40'
-        checksum = 0
-        for ch in cmd_body:
-            checksum ^= ord(ch)
-        cmd = f'${cmd_body}*{checksum:02X}\r\n'
+        cmd = '$VNWRG,07,40*XX\r\n'
         self.get_logger().info(f'Setting output rate to 40 Hz: {cmd.strip()}')
         self.serial_conn.write(cmd.encode('ascii'))
 
