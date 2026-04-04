@@ -105,13 +105,8 @@ class IMUDriver(Node):
         Command format: $VNWRG,07,40*XX
         The checksum is calculated over 'VNWRG,07,40'
         """
-        cmd_body = 'VNWRG,07,40'
-        checksum = 0
-        for ch in cmd_body:
-            checksum ^= ord(ch)
-        cmd = f'${cmd_body}*{checksum:02X}\r\n'
-        self.get_logger().info(f'Setting output rate to 40 Hz: {cmd.strip()}')
-        self.serial_conn.write(cmd.encode('ascii'))
+        self.get_logger().info('Setting output rate to 40 Hz')
+        self.serial_conn.write(b'$VNWRG,07,40*59\r\n')
 
     def read_and_publish(self):
         if self.serial_conn is None or not self.serial_conn.is_open:
