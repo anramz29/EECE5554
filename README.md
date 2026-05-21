@@ -6,16 +6,34 @@ Course lab repository for EECE5554 at Northeastern University. Each lab builds t
 
 ---
 
+## Final Report (For the Class)
+
+**Magnetic Interference and Calibration: A Comparative Analysis of Magnetometers**
+*Malia Howe, Shayda Moezzi, Adrian Ramirez — EECE5554, April 2026*
+
+Capstone report for the course. Benchmarked four magnetometer calibration algorithms (MinMax, Magcal, Scalar EKF, and Levenberg-Marquardt) across an industrial-grade VN-100 and a consumer-grade iPhone 11 under controlled hard iron, soft iron, and combined distortion conditions at 7 cm and 30 cm separation distances.
+
+Key findings:
+- The iPhone 11 outperformed the VN-100 (13–19% vs 22–34% mean magnitude error), attributed to the VN-100's Vector Processing Engine violating algorithm independence assumptions
+- Magcal and Levenberg-Marquardt produced the most consistent calibration output (~0.92 µT and ~0.94 µT std dev)
+- MinMax was fastest but most sensitive to distortion intensity
+- Scalar EKF achieved competitive accuracy but had the highest standard deviation and slowest runtime
+
+Full report: [`EECE5554_Final_Report.pdf`](./EECE5554_Final_Report.pdf)
+
+---
+
 ## Repository Structure
 
 | Directory | Topic |
 |-----------|-------|
 | [LAB0](#lab0) | ROS 2 Publisher / Subscriber basics |
 | [LAB1](#lab1) | GPS Driver (SparkFun NEO-M9N) |
+| [gnss (LAB2)](#gnss) | RTK GNSS Driver & Accuracy Analysis |
 | [LAB3](#lab3) | IMU Driver (VectorNav VN-100) |
 | [LAB4](#lab4) | GPS + IMU Integration with EKF |
 | [LAB5](#lab5) | Camera Calibration & Image Mosaicking |
-| [gnss](#gnss) | RTK GNSS Driver & Accuracy Analysis |
+
 
 ---
 
